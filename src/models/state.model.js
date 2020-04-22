@@ -7,8 +7,6 @@ const StateSchema = new BaseSchema(
         stateId: Number,
         name: String,
         countryId: String,
-        latitude: Number,
-        longitude: Number
     },
     { collection: 'State' });
 
@@ -16,7 +14,7 @@ const StateSchema = new BaseSchema(
 StateSchema.virtual('country', {
     ref: 'Country',
     localField: 'countryId',
-    foreignField: 'countryId',
+    foreignField: 'alphaCode3',
     justOne: true
 });
 
@@ -29,14 +27,14 @@ StateSchema.virtual('country', {
  */
 StateSchema.statics.list = function () {
     return this.find()
-        .populate('country', 'countryId name -_id')
+        .populate('country', 'alphaCode3 name -_id').sort('name')
         .select('-_id -__v').exec();
 };
 
 StateSchema.statics.byCountry = function (countryId) {
     return this
         .find({ countryId: new RegExp(countryId, 'i') })
-        .select('stateId name countryId -_id')
+        .sort('name').select('-_id')
         .exec();
 };
 

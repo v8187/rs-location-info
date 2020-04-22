@@ -4,11 +4,9 @@ import { BaseSchema } from './BaseSchema';
 
 const CountrySchema = new BaseSchema(
     {
-        countryId: String,
+        alphaCode3: String,
         name: String,
-        webId: String,
-        latitude: Number,
-        longitude: Number
+        alphaCode2: String
     },
     { collection: 'Country' });
 
@@ -20,9 +18,7 @@ const CountrySchema = new BaseSchema(
  * Arrow functions explicitly prevent binding this
  */
 CountrySchema.statics.list = function () {
-    return this.aggregate([{
-        $project: { countryId: 1, name: 1, webId: 1, _id: 0 }
-    }]).exec();
+    return this.find().sort('name').exec();
 };
 
 export const CountryModel = model('Country', CountrySchema);
