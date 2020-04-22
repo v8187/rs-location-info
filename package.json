@@ -1,0 +1,46 @@
+{
+  "name": "rs-location-info",
+  "version": "1.0.0",
+  "description": "Restful API using Node.js express and MongoDB on Heroku platform",
+  "main": "index.js",
+  "engines": {
+    "node": "10.x"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "helmet": "^3.21.3",
+    "http-status-codes": "^1.4.0",
+    "mongodb": "^3.5.4",
+    "mongoose": "^5.9.2",
+    "react-addons-update": "^15.6.2"
+  },
+  "devDependencies": {
+    "request": "^2.88.2",
+    "tape": "^4.13.0"
+  },
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "node test.js",
+    "resetdb": "node ./src/mock-data/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/v8187/rs-location-info.git"
+  },
+  "author": "Vikram Gupta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/v8187/rs-location-info/issues"
+  },
+  "homepage": "https://github.com/v8187/rs-location-info#readme",
+  "keywords": [
+    "node",
+    "heroku",
+    "express",
+    "rest api"
+  ]
+}
