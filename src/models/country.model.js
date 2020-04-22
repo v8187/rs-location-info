@@ -18,7 +18,7 @@ const CountrySchema = new BaseSchema(
  * Arrow functions explicitly prevent binding this
  */
 CountrySchema.statics.list = function () {
-    return this.find().sort('name').exec();
+    return this.find().select('-_id -__v').sort('name').exec();
 };
 
 export const CountryModel = model('Country', CountrySchema);
